@@ -122,8 +122,8 @@ export default function Home() {
 
         {/* Header (Light Theme) */}
         <div className="w-full px-6 lg:px-12 flex flex-col md:flex-row md:items-end justify-between mb-20 mt-20 gap-8 [animation:fadeSlideIn_0.8s_ease-out_0.2s_both] animate-on-scroll animate">
-          <h2 className="text-5xl lg:text-7xl font-normal text-neutral-900 tracking-tighter leading-[0.9] uppercase">
-            OUR PROJECT
+          <h2 className="text-5xl lg:text-6xl font-normal text-neutral-900 tracking-tighter leading-[0.9] uppercase">
+            Proyek Kami
           </h2>
           <a
             href="#"
@@ -321,17 +321,16 @@ export default function Home() {
         </div>
         </footer>
 
-        <main className="flex-grow grid grid-cols-1 lg:px-12 lg:grid-cols-12 my-32 pb-12 relative gap-x-8 gap-y-8">
+        <main className="flex-grow grid grid-cols-1 lg:px-12 lg:grid-cols-12 my-10 pb-12 relative gap-x-8 gap-y-8 px-6 py-6">
           <div className="lg:col-span-5 flex flex-col lg:pt-10 z-20 relative justify-center">
-            <h1 className="text-6xl lg:text-[5rem] leading-[0.9] font-normal tracking-tighter text-black mb-6 uppercase [animation:fadeSlideIn_0.8s_ease-out_0.1s_both] animate-on-scroll animate">
-              Shaping Void
-              <br />
-              Void Into Matter
+            <h1 className="text-3xl lg:text-[2.3rem] font-normal tracking-tighter text-black mb-12 uppercase [animation:fadeSlideIn_0.8s_ease-out_0.1s_both] animate-on-scroll animate">
+              Membangun Bekerlanjutan
+              Untuk Kawasan Terpadu
             </h1>
 
-            <p className="text-lg text-neutral-600 max-w-md leading-relaxed mb-12 font-light [animation:fadeSlideIn_0.8s_ease-out_0.2s_both] animate-on-scroll animate">
-              Constructing the ethereal through parametric design and brutalist
-              principles. We redefine the skyline one artifact at a time.
+            <p className="text-lg text-neutral-600 text-justify max-w-md leading-relaxed mb-12 font-light [animation:fadeSlideIn_0.8s_ease-out_0.2s_both] animate-on-scroll animate">
+              Kawasan industri dan komersial terintegrasi di Tangerang Utara dikembangkan oleh PT. Agung Intiland dengan fasilitas modern dan lokasi strategis.
+              Kami memiliki lebih dari 1200 Hektar total kawasan dengan pilihan unit mulai dari Kavling, Gudand Serbaguna dan Ruko untuk menunjang bisnis anda.
             </p>
 
             <div className="flex flex-col items-start gap-3 [animation:fadeSlideIn_0.8s_ease-out_0.3s_both] animate-on-scroll animate">
@@ -370,7 +369,7 @@ export default function Home() {
 
                 <button className="btn">
                   <span className="btn-text tracking-tight">
-                    Start Creating
+                    Tentang Perusahaan
                   </span>
                   <svg
                     className="btn-svg"
@@ -390,21 +389,14 @@ export default function Home() {
                 </button>
               </a>
 
-              <span className="text-xs text-neutral-500 uppercase tracking-widest pl-4 opacity-70">
+              {/* <span className="text-xs text-neutral-500 uppercase tracking-widest pl-4 opacity-70">
                 View Showreel (01:20)
-              </span>
+              </span> */}
             </div>
           </div>
 
           <div className="lg:col-span-4 relative flex items-center justify-center py-20 lg:py-0 [animation:fadeSlideIn_1s_ease-out_0.2s_both] animate-on-scroll animate">
             <div className="absolute inset-0 grid-bg opacity-100 z-0 mx-[-2rem] mask-image-linear-gradient(to bottom, black, transparent)"></div>
-
-            <div className="absolute top-1/4 right-0 text-neutral-300 text-2xl font-light z-10">
-              +
-            </div>
-            <div className="absolute bottom-20 left-0 text-neutral-300 text-2xl font-light z-10">
-              +
-            </div>
 
             <div className="relative z-10 w-full aspect-[3/4] overflow-hidden shadow-2xl border border-black/10 group">
               <img
@@ -422,10 +414,10 @@ export default function Home() {
             <div className="flex-1 flex flex-col justify-between h-full pb-10">
               <div className="stat-item mt-10" data-img-id="1">
                 <span className="stat-value text-7xl font-light tracking-tighter text-neutral-300 block transition-colors">
-                  142
+                  01
                 </span>
                 <span className="text-sm text-neutral-500 uppercase tracking-widest mt-2 block pl-2 group-hover:text-black">
-                  Global Awards
+                  Menjaga Kualitas Produk
                 </span>
               </div>
 
@@ -434,10 +426,10 @@ export default function Home() {
                 data-img-id="2"
               >
                 <span className="stat-value text-7xl font-light tracking-tighter text-neutral-300 block transition-colors">
-                  08
+                  02
                 </span>
                 <span className="text-sm text-neutral-500 uppercase tracking-widest mt-2 block pl-2 group-hover:text-black">
-                  Regional Offices
+                  Dikembangkan Oleh Manajemen Estate Terbaik
                 </span>
               </div>
 
