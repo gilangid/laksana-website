@@ -15,9 +15,7 @@ export default function Home() {
   const carouselRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const initInViewAnimations = function (
-      selector = ".animate-on-scroll"
-    ) {
+    const initInViewAnimations = function (selector = ".animate-on-scroll") {
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -37,50 +35,71 @@ export default function Home() {
 
     initInViewAnimations();
 
-    const stats = document.querySelectorAll(".stat-item");
-    const mainImage = document.getElementById("main-image") as HTMLImageElement;
+    const stats = Array.from(document.querySelectorAll(".stat-item")) as HTMLElement[];
+    const mainImage = document.getElementById("main-image") as HTMLImageElement | null;
 
+    // Ensure first stat is active on initial load
+    if (stats.length > 0) {
+      stats.forEach((s) => s.classList.remove("active"));
+      stats[0].classList.add("active");
+    }
+
+    // Attach click handlers with proper cleanup and preloading
+    const statListeners: { el: HTMLElement; handler: EventListener }[] = [];
     stats.forEach((stat) => {
-      stat.addEventListener("click", () => {
+      const handler = () => {
         stats.forEach((s) => s.classList.remove("active"));
         stat.classList.add("active");
-        const imgId = (stat as HTMLElement).dataset.imgId;
-        if (mainImage && imgId && images[imgId]) {
-          mainImage.classList.add("fade-out");
-          setTimeout(() => {
-            setCurrentImage(images[imgId]);
-            mainImage.onload = () => {
-              mainImage.classList.remove("fade-out");
-            };
-          }, 500);
+        const imgId = stat.dataset.imgId;
+        if (imgId && images[imgId]) {
+          const newSrc = images[imgId];
+          if (mainImage) mainImage.classList.add("fade-out");
+
+          // Preload image before swapping to avoid flicker / missing image
+          const loader = document.createElement('img') as HTMLImageElement;
+          loader.src = newSrc;
+          loader.onload = () => {
+            // Once loaded, update state so React swaps src synchronously
+            setCurrentImage(newSrc);
+            // small delay to let render commit, then remove fade
+            setTimeout(() => {
+              if (mainImage) mainImage.classList.remove("fade-out");
+            }, 50);
+          };
         }
-      });
+      };
+
+      stat.addEventListener("click", handler);
+      statListeners.push({ el: stat, handler });
     });
 
     // Carousel navigation
     const carouselContainer = carouselRef.current;
-    const leftBtn = document.querySelector('.carousel-btn-left') as HTMLButtonElement;
-    const rightBtn = document.querySelector('.carousel-btn-right') as HTMLButtonElement;
+    const leftBtn = document.querySelector('.carousel-btn-left') as HTMLButtonElement | null;
+    const rightBtn = document.querySelector('.carousel-btn-right') as HTMLButtonElement | null;
 
     const scrollCarousel = (direction: 'left' | 'right') => {
       if (!carouselContainer) return;
       const scrollAmount = 400; // Adjust scroll distance
-      const targetScroll = direction === 'left' 
-        ? carouselContainer.scrollLeft - scrollAmount 
+      const targetScroll = direction === 'left'
+        ? carouselContainer.scrollLeft - scrollAmount
         : carouselContainer.scrollLeft + scrollAmount;
-      
-      carouselContainer.scrollTo({
-        left: targetScroll,
-        behavior: 'smooth',
-      });
+
+      carouselContainer.scrollTo({ left: targetScroll, behavior: 'smooth' });
     };
 
-    leftBtn?.addEventListener('click', () => scrollCarousel('left'));
-    rightBtn?.addEventListener('click', () => scrollCarousel('right'));
+    const onLeft = () => scrollCarousel('left');
+    const onRight = () => scrollCarousel('right');
+
+    leftBtn?.addEventListener('click', onLeft);
+    rightBtn?.addEventListener('click', onRight);
 
     return () => {
-      leftBtn?.removeEventListener('click', () => scrollCarousel('left'));
-      rightBtn?.removeEventListener('click', () => scrollCarousel('right'));
+      // cleanup stat listeners
+      statListeners.forEach(({ el, handler }) => el.removeEventListener('click', handler));
+      // cleanup carousel listeners
+      leftBtn?.removeEventListener('click', onLeft);
+      rightBtn?.removeEventListener('click', onRight);
     };
   }, []);
 
@@ -330,7 +349,7 @@ export default function Home() {
 
             <p className="text-lg text-neutral-600 text-justify max-w-md leading-relaxed mb-12 font-light [animation:fadeSlideIn_0.8s_ease-out_0.2s_both] animate-on-scroll animate">
               Kawasan industri dan komersial terintegrasi di Tangerang Utara dikembangkan oleh PT. Agung Intiland dengan fasilitas modern dan lokasi strategis.
-              Kami memiliki lebih dari 1200 Hektar total kawasan dengan pilihan unit mulai dari Kavling, Gudand Serbaguna dan Ruko untuk menunjang bisnis anda.
+              Kami memiliki lebih dari 1200 Hektar total kawasan dengan pilihan unit mulai dari Kavling, Gudang Serbaguna dan Ruko untuk menunjang bisnis anda.
             </p>
 
             <div className="flex flex-col items-start gap-3 [animation:fadeSlideIn_0.8s_ease-out_0.3s_both] animate-on-scroll animate">
@@ -439,33 +458,21 @@ export default function Home() {
               >
                 <div className="flex items-start gap-4 mb-4">
                   <div className="relative group cursor-pointer">
-                    <Image
-                      src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/63a6abea-fa7c-44e7-b134-9d70239f3d3f_320w.webp"
-                      alt="Lead Architect"
-                      width={320}
-                      height={320}
-                      className="w-14 h-14 rounded-full border border-neutral-200 object-cover relative z-10 grayscale group-hover:grayscale-0 transition-all"
-                    />
-                    <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-12 h-12 bg-[#FACC15] rounded-full flex items-center justify-center z-0 translate-x-full -ml-6 transition-transform group-hover:translate-x-[110%]">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="1em"
-                        height="1em"
-                        viewBox="0 0 24 24"
-                        className="text-black text-xl"
-                      >
-                        <path
-                          fill="currentColor"
-                          fillRule="evenodd"
-                          d="M17.47 15.53a.75.75 0 0 0 1.28-.53V6a.75.75 0 0 0-.75-.75H9a.75.75 0 0 0-.53 1.28z"
-                          clipRule="evenodd"
-                        ></path>
-                        <path
-                          fill="currentColor"
-                          d="M5.47 17.47a.75.75 0 1 0 1.06 1.06l6.97-6.97l-1.06-1.06z"
-                          opacity=".5"
-                        ></path>
-                      </svg>
+                    <div className="flex items-center gap-3">
+                      <Image
+                        src="/images/usp/usp-1.png"
+                        alt="Lead Architect"
+                        width={80}
+                        height={80}
+                        className="w-28 h-28 rounded-full object-cover relative z-10 transition-all"
+                      />
+                      <Image
+                        src="/images/usp/usp-2.png"
+                        alt="Lead Architect 2"
+                        width={80}
+                        height={80}
+                        className="w-28 h-28 rounded-full object-cover relative z-10 transition-all"
+                      />
                     </div>
                   </div>
                 </div>
@@ -477,124 +484,164 @@ export default function Home() {
             </div>
           </div>
         </main>
-
-        <section className="relative w-full border-t border-black/5 bg-[#F5F5F5]">
-          <div className="w-full px-6 lg:px-12 py-12 lg:py-20 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative overflow-hidden">
-            <div className="lg:col-span-3 relative h-48 lg:h-full w-full [animation:fadeSlideIn_0.8s_ease-out_0.3s_both] animate-on-scroll">
-              <div className="w-full h-full overflow-hidden relative opacity-50 hover:opacity-100 transition-opacity duration-700 border border-black/5">
-                <Image
-                  src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/df7a2dd9-504b-4462-9e25-8f9322d8a718_1600w.webp"
-                  alt="Architecture Detail"
-                  layout="fill"
-                  objectFit="cover"
-                  className="grayscale hover:grayscale-0 transition-all duration-700"
-                />
-                <div
-                  className="absolute inset-0 bg-gradient-to-t from-[#F5F5F5] to-transparent opacity-50"
-                ></div>
-              </div>
-            </div>
-
-            <div className="lg:col-span-5 space-y-8 relative z-10 [animation:fadeSlideIn_0.8s_ease-out_0.1s_both] animate-on-scroll lg:pl-8">
-              <p className="text-lg lg:text-xl text-neutral-600 leading-relaxed font-light">
-                Novus Arc creates environments that challenge perception. We
-                fuse{" "}
-                <span className="text-black font-medium">
-                  brutalist principles
-                </span>{" "}
-                with organic fluidity to build the monuments of tomorrow.
-              </p>
-
-              <div className="flex gap-4">
-                <span className="inline-block border border-black/10 text-neutral-600 text-xs font-medium py-2 px-4 rounded-full uppercase tracking-wider hover:border-[#FACC15] hover:text-[#FACC15] transition-colors cursor-default">
-                  #Minimalism
-                </span>
-                <span className="inline-block border border-black/10 text-neutral-600 text-xs font-medium py-2 px-4 rounded-full uppercase tracking-wider hover:border-[#FACC15] hover:text-[#FACC15] transition-colors cursor-default">
-                  #Futurism
-                </span>
-              </div>
-            </div>
-
-            <div className="lg:col-span-4 relative z-10 [animation:fadeSlideIn_0.8s_ease-out_0.2s_both] animate-on-scroll lg:text-right">
-              <h2 className="text-3xl lg:text-4xl font-light text-black tracking-tight leading-tight">
-                Architecture for the post-digital era.
-              </h2>
-            </div>
-          </div>
-        </section>
-        <footer className="w-full bg-[#FAFAFA] relative pt-32 pb-0 overflow-hidden">
-          <div className="absolute top-12 left-0 right-0 flex justify-center z-30 px-6">
+        
+      <footer className="w-full bg-[#FAFAFA] relative overflow-hidden">
+        <div className="absolute top-12 left-0 right-0 flex justify-center z-30 px-6">
           </div>
 
-          <div className="max-w-[90%] mx-auto flex items-end gap-4 relative z-10 translate-y-2 opacity-50 hover:opacity-100 transition-opacity duration-500">
-            <div className="h-16 w-48 bg-[#F5F5F5] border-t border-x border-black/10 rounded-t-2xl flex items-center justify-center gap-2 relative z-20">
-                    <span className="iconify text-black" data-icon="solar:code-square-bold-duotone"></span>
-              <span className="text-xs font-semibold text-black uppercase tracking-widest">
-                System
-              </span>
-            </div>
-            <div className="h-12 w-40 bg-[#FAFAFA] border-t border-x border-black/5 rounded-t-xl flex items-center justify-center gap-2 relative z-10 hover:bg-[#F5F5F5] hover:h-14 transition-all cursor-pointer group">
-              <span className="iconify text-neutral-400 group-hover:text-black transition-colors" data-icon="solar:users-group-rounded-bold-duotone"></span>
-              <span className="text-xs font-medium text-neutral-400 uppercase tracking-widest group-hover:text-black transition-colors">
-                Studio
-              </span>
-            </div>
-            <div className="h-12 w-40 bg-[#FAFAFA] border-t border-x border-black/5 rounded-t-xl flex items-center justify-center gap-2 relative z-10 hover:bg-[#F5F5F5] hover:h-14 transition-all cursor-pointer group">
-              <span className="iconify text-neutral-400 group-hover:text-black transition-colors" data-icon="solar:document-text-bold-duotone"></span>
-              <span className="text-xs font-medium text-neutral-400 uppercase tracking-widest group-hover:text-black transition-colors">
-                Legal
-              </span>
-            </div>
-          </div>
-
-          <div className="w-full bg-[#F5F5F5] border-t border-black/10 rounded-t-[3rem] relative z-20 overflow-hidden">
-            <div className="w-full px-6 lg:px-12 py-20 lg:py-32 grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 relative z-20">
-              <div className="lg:col-span-7 flex flex-col justify-center">
-                <h2 className="flex flex-col text-6xl lg:text-[7rem] leading-[0.85] font-normal text-black tracking-tighter mb-24">
-                  Systematic.
-                  <span className="text-neutral-400 pt-10">Parametric.</span>
-                  <span className="pt-10">Adaptive.</span>
-                </h2>
-
-                <div className="flex flex-wrap gap-8 items-center mt-auto opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
-                  <span className="iconify hover:text-black transition-colors" data-icon="simple-icons:framer"></span>
-                  <span className="iconify hover:text-black transition-colors" data-icon="simple-icons:github"></span>
-                  <div className="h-6 w-px bg-black/10"></div>
-                  <span className="iconify hover:text-black transition-colors" data-icon="simple-icons:x"></span>
-                  <span className="iconify hover:text-black transition-colors" data-icon="simple-icons:discord"></span>
+          <div className="branding">
+            <section className="overflow-hidden bg-white border-neutral-200 border-t pt-24 pb-24 relative">
+              <div className="bg-gradient-to-b from-neutral-50 via-white to-neutral-100 absolute top-0 right-0 bottom-0 left-0" />
+              <div className="container mx-auto px-6 lg:px-12 relative z-10">
+                {/* Label */}
+                <div className="flex flex-col items-center mb-14">
+                  <div className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white/80 px-4 py-1 shadow-sm">
+                    <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-neutral-500">
+                      Klien Kami
+                    </span>
+                  </div>
+                  <h2 className="mt-6 text-4xl lg:text-5xl font-medium tracking-tight text-neutral-900 text-center max-w-3xl leading-[1.05]">
+                    Dipercaya oleh perusahaan besar
+                  </h2>
+                  <p className="mt-4 text-base text-neutral-500 text-center max-w-2xl">
+                    Kini mereka dapat fokus mengembangkan bisnis & operasional gudang lebih efisien bersama kami.
+                  </p>
                 </div>
-              </div>
-
-              <div className="lg:col-span-5 flex lg:justify-end items-center">
-                <div className="w-full max-w-md bg-[#FACC15] p-8 lg:p-12 rounded-xl relative overflow-hidden group rotate-1 hover:rotate-0 transition-transform duration-500 shadow-2xl">
-                  <span className="iconify absolute -right-8 -top-8 text-black/10 text-[12rem] rotate-12 group-hover:rotate-45 transition-transform duration-700" data-icon="solar:settings-bold-duotone"></span>
-
-                  <div className="relative z-10">
-                    <h3 className="text-3xl font-medium text-black tracking-tight leading-tight mb-6">
-                      Optimized structures,at every node.
-                    </h3>
-                    <p className="text-black/70 text-sm font-medium leading-relaxed mb-10 font-mono">
-                      // Where every constraint is met with calculation and
-                      every blueprint is a revolution.
-                    </p>
-
-                    <div className="flex items-center justify-between border-t border-black/10 pt-6">
-                      <div className="flex flex-col">
-                        <span className="text-[10px] uppercase tracking-widest text-black/50 font-semibold">
-                          Status
-                        </span>
-                        <span className="text-xs font-semibold text-black mt-1">
-                          Operational
-                        </span>
-                      </div>
-                      <button className="bg-black text-white w-10 h-10 rounded-full flex items-center justify-center hover:scale-110 transition-transform group/btn">
-                        <span className="iconify group-hover/btn:rotate-45 transition-transform" data-icon="solar:arrow-right-up-bold-duotone"></span>
-                      </button>
-                    </div>
+                {/* Logos Row */}
+                <div className="mt-14 flex flex-col items-center gap-5">
+                  <div className="flex flex-wrap justify-center gap-6 lg:gap-10">
+                    <span className="inline-flex items-center gap-2 text-xs font-medium text-neutral-400">
+                      <img
+                        src="/brand/coca-cola.svg"
+                        alt="Lead Architect"
+                        className="w-28 h-28 object-cover relative transition-all"
+                      />
+                      {/* <span className="hidden sm:inline">GitHub Labs</span> */}
+                    </span>
+                    <span className="inline-flex items-center gap-2 text-xs font-medium text-neutral-400">
+                      <img
+                        src="/brand/google.svg"
+                        alt="Lead Architect"
+                        className="w-28 h-28 object-cover relative transition-all"
+                      />
+                    </span>
+                    <span className="inline-flex items-center gap-2 text-xs font-medium text-neutral-400">
+                      <img
+                        src="/brand/heineken.svg"
+                        alt="Lead Architect"
+                        className="w-28 h-28 object-cover relative transition-all"
+                      />
+                    </span>
+                    <span className="inline-flex items-center gap-2 text-xs font-medium text-neutral-400">
+                      <img
+                        src="/brand/microsoft.svg"
+                        alt="Lead Architect"
+                        className="w-28 h-28 object-cover relative transition-all"
+                      />
+                    </span>
+                    <span className="inline-flex items-center gap-2 text-xs font-medium text-neutral-400">
+                      <img
+                        src="/brand/underarmour.svg"
+                        alt="Lead Architect"
+                        className="w-20 h-20 object-cover relative transition-all"
+                      />
+                    </span>
+                    <span className="inline-flex items-center gap-2 text-xs font-medium text-neutral-400">
+                      <img
+                        src="/brand/yamaha.svg"
+                        alt="Lead Architect"
+                        className="w-28 h-28 object-cover relative transition-all"
+                      />
+                    </span>
+                    <span className="inline-flex items-center gap-2 text-xs font-medium text-neutral-400">
+                      <img
+                        src="/brand/mastercard.svg"
+                        alt="Lead Architect"
+                        className="w-20 h-20 object-cover relative transition-all"
+                      />
+                    </span>
                   </div>
                 </div>
               </div>
-            </div>
+            </section>
+          </div>
+
+          <div className="branding">
+            <section className="overflow-hidden bg-white border-neutral-200 border-t pt-24 pb-24 relative">
+              <div className="bg-gradient-to-b from-neutral-50 via-white to-neutral-100 absolute top-0 right-0 bottom-0 left-0" />
+              <div className="container mx-auto px-6 lg:px-12 relative z-10">
+                {/* Label */}
+                <div className="flex flex-col items-center mb-14">
+                  <div className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white/80 px-4 py-1 shadow-sm">
+                    <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-neutral-500">
+                      Klien Kami
+                    </span>
+                  </div>
+                  <h2 className="mt-6 text-4xl lg:text-5xl font-medium tracking-tight text-neutral-900 text-center max-w-3xl leading-[1.05]">
+                    Dipercaya oleh perusahaan besar
+                  </h2>
+                  <p className="mt-4 text-base text-neutral-500 text-center max-w-2xl">
+                    Kini mereka dapat fokus mengembangkan bisnis & operasional gudang lebih efisien bersama kami.
+                  </p>
+                </div>
+                {/* Logos Row */}
+                <div className="mt-14 flex flex-col items-center gap-5">
+                  <div className="flex flex-wrap justify-center gap-6 lg:gap-10">
+                    <span className="inline-flex items-center gap-2 text-xs font-medium text-neutral-400">
+                      <img
+                        src="/brand/coca-cola.svg"
+                        alt="Lead Architect"
+                        className="w-28 h-28 object-cover relative transition-all"
+                      />
+                      {/* <span className="hidden sm:inline">GitHub Labs</span> */}
+                    </span>
+                    <span className="inline-flex items-center gap-2 text-xs font-medium text-neutral-400">
+                      <img
+                        src="/brand/google.svg"
+                        alt="Lead Architect"
+                        className="w-28 h-28 object-cover relative transition-all"
+                      />
+                    </span>
+                    <span className="inline-flex items-center gap-2 text-xs font-medium text-neutral-400">
+                      <img
+                        src="/brand/heineken.svg"
+                        alt="Lead Architect"
+                        className="w-28 h-28 object-cover relative transition-all"
+                      />
+                    </span>
+                    <span className="inline-flex items-center gap-2 text-xs font-medium text-neutral-400">
+                      <img
+                        src="/brand/microsoft.svg"
+                        alt="Lead Architect"
+                        className="w-28 h-28 object-cover relative transition-all"
+                      />
+                    </span>
+                    <span className="inline-flex items-center gap-2 text-xs font-medium text-neutral-400">
+                      <img
+                        src="/brand/underarmour.svg"
+                        alt="Lead Architect"
+                        className="w-20 h-20 object-cover relative transition-all"
+                      />
+                    </span>
+                    <span className="inline-flex items-center gap-2 text-xs font-medium text-neutral-400">
+                      <img
+                        src="/brand/yamaha.svg"
+                        alt="Lead Architect"
+                        className="w-28 h-28 object-cover relative transition-all"
+                      />
+                    </span>
+                    <span className="inline-flex items-center gap-2 text-xs font-medium text-neutral-400">
+                      <img
+                        src="/brand/mastercard.svg"
+                        alt="Lead Architect"
+                        className="w-20 h-20 object-cover relative transition-all"
+                      />
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
 
             <div className="relative w-full overflow-hidden pointer-events-none select-none pt-20">
               <h1 className="text-[22vw] leading-none font-bold text-black/5 text-center -mb-12 lg:-mb-24 tracking-tighter font-space-grotesk">
@@ -608,7 +655,6 @@ export default function Home() {
                 © 2024 Novus Arc Systems. All rights reserved.
               </p>
             </div>
-          </div>
         </footer>
     </>
   );
