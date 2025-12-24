@@ -194,7 +194,7 @@ export default function Home() {
         </nav>
 
         {/* Header (Light Theme) */}
-        <div className="w-full px-6 lg:px-12 flex flex-col md:flex-row md:items-end justify-between mb-20 mt-20 gap-8 [animation:fadeSlideIn_0.8s_ease-out_0.2s_both] animate-on-scroll animate">
+        <div className="w-full px-6 lg:px-12 flex flex-col md:flex-row md:items-end justify-between mb-7 mt-20 gap-8 [animation:fadeSlideIn_0.8s_ease-out_0.2s_both] animate-on-scroll animate">
           <h2 className="text-5xl lg:text-6xl font-normal text-neutral-900 tracking-tighter leading-[0.9] uppercase">
             Proyek Kami
           </h2>
@@ -213,22 +213,22 @@ export default function Home() {
           style={{ msOverflowStyle: "none", scrollbarWidth: "none" }}
         >
           {/* Card 1: Luxima */}
-          <div className="snap-center shrink-0 w-[300px] md:w-[360px] group cursor-default">
+          <a href="#" className="snap-center shrink-0 w-[300px] md:w-[360px] group cursor-pointer block">
             <div className="aspect-[4/5] overflow-hidden transition-all duration-500 hover:border-neutral-300 bg-white w-full border border-black/5 relative">
               {/* Background Abstract */}
               <div className="absolute top-0 right-0 bottom-0 left-0">
                 <img
                   src="/images/card-unit/luxima.png"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
                   alt="Abstract"
                 />
               </div>
-              {/* Overlay Grid */}
-          <div className="pointer-events-none opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LCAyNTUsIDI1NSwgMC4wNSkiLz48L3N2Zz4=')] absolute top-0 right-0 bottom-0 left-0"></div>
+          {/* Overlay Grid */}
+          <div className="opacity-10 absolute top-0 right-0 bottom-0 left-0"></div>
             </div>
             <div className="justify-start mt-6 border-l border-black/5 pl-4">
               <h3 className="text-xl text-neutral-900 font-medium mb-2">
-                Luxima Bizhub 4in1
+                Luxima Bizhub 4 in 1
               </h3>
 
               <div className="flex justify-start items-center">
@@ -251,16 +251,16 @@ export default function Home() {
                 Didesain untuk menjawab kebutuhan ruang usaha dan tempat tinggal dalam satu atap yang sama sebagai solusi nyata khususnya bagi start-up business.
               </p>
             </div>
-          </div>
+          </a>
 
           {/* Card 2: Laksana Tahap 1 */}
-          <div className="snap-center shrink-0 w-[300px] md:w-[360px] group cursor-default">
+          <a href="#" className="snap-center shrink-0 w-[300px] md:w-[360px] group cursor-pointer block">
             <div className="aspect-[4/5] overflow-hidden transition-all duration-500 hover:border-neutral-300 bg-white w-full border border-black/5 relative">
               {/* Background Abstract */}
               <div className="absolute top-0 right-0 bottom-0 left-0">
                 <img
                   src="/images/card-unit/laksana1.png"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
                   alt="Abstract"
                 />
               </div>
@@ -292,16 +292,16 @@ export default function Home() {
                 Kawasan terpadu dengan pilihan unit dan luas kavling hingga 4142 m² menjadikan pilihan yang lengkap serta anda memilihin unit yang tersedia.
               </p>
             </div>
-          </div>
+          </a>
 
           {/* Card 3: Laksana Tahap 2 */}
-          <div className="snap-center shrink-0 w-[300px] md:w-[360px] group cursor-default">
+          <a href="#" className="snap-center shrink-0 w-[300px] md:w-[360px] group cursor-pointer block">
             <div className="aspect-[4/5] overflow-hidden transition-all duration-500 hover:border-neutral-300 bg-white w-full border border-black/5 relative">
               {/* Background Abstract */}
               <div className="absolute top-0 right-0 bottom-0 left-0">
                 <img
                   src="/images/card-unit/laksana2.png"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
                   alt="Abstract"
                 />
               </div>
@@ -333,16 +333,16 @@ export default function Home() {
                 Penuhi kebutungan industri anda dengan memilih luasan tanah yang beragam, serta dukungan izin industri yang lengkap untuk memulai kegiatan produksi bisnis anda.
               </p>
             </div>
-          </div>
+          </a>
 
           {/* Card 4: Kavling Industri */}
-          <div className="snap-center shrink-0 w-[300px] md:w-[360px] group cursor-default">
+          <a href="#" className="snap-center shrink-0 w-[300px] md:w-[360px] group cursor-pointer block">
             <div className="aspect-[4/5] overflow-hidden transition-all duration-500 hover:border-neutral-300 bg-white w-full border border-black/5 relative">
               {/* Background Abstract */}
               <div className="absolute top-0 right-0 bottom-0 left-0">
                 <img
                   src="/images/card-unit/kavling-industri.png"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
                   alt="Abstract"
                 />
               </div>
@@ -374,7 +374,7 @@ export default function Home() {
                 Didesain untuk menjawab kebutuhan ruang usaha dan tempat tinggal dalam satu atap yang sama sebagai solusi nyata khususnya bagi start-up business.
               </p>
             </div>
-          </div>
+          </a>
           </div>
         </div>
         
@@ -396,12 +396,12 @@ export default function Home() {
 
         <main className="flex-grow grid grid-cols-1 lg:px-12 lg:grid-cols-12 my-10 pb-12 relative gap-x-8 gap-y-8 px-6 py-6">
           <div className="lg:col-span-5 flex flex-col lg:pt-10 z-20 relative justify-center">
-            <h1 className="text-3xl lg:text-[2.3rem] font-normal tracking-tighter text-black mb-12 uppercase [animation:fadeSlideIn_0.8s_ease-out_0.1s_both] animate-on-scroll animate">
-              Membangun Bekerlanjutan
-              Untuk Kawasan Terpadu
+            <h1 className="text-3xl lg:text-[2.3rem] font-normal max-w-md tracking-tighter text-black mb-12 [animation:fadeSlideIn_0.8s_ease-out_0.1s_both] animate-on-scroll animate">
+              Membangun bekerlanjutan
+              untuk kawasan terpadu
             </h1>
 
-            <p className="text-lg text-neutral-600 text-justify max-w-md leading-relaxed mb-12 font-light [animation:fadeSlideIn_0.8s_ease-out_0.2s_both] animate-on-scroll animate">
+            <p className="text-md text-neutral-600 text-justify max-w-md leading-relaxed mb-12 font-light [animation:fadeSlideIn_0.8s_ease-out_0.2s_both] animate-on-scroll animate">
               Kawasan industri dan komersial terintegrasi di Tangerang Utara dikembangkan oleh PT. Agung Intiland dengan fasilitas modern dan lokasi strategis.
               Kami memiliki lebih dari 1200 Hektar total kawasan dengan pilihan unit mulai dari Kavling, Gudang Serbaguna dan Ruko untuk menunjang bisnis anda.
             </p>
@@ -555,7 +555,7 @@ export default function Home() {
                       Klien Kami
                     </span>
                   </div>
-                  <h2 className="mt-6 text-4xl lg:text-5xl font-medium tracking-tight text-neutral-900 text-center max-w-3xl leading-[1.05]">
+                  <h2 className="mt-6 text-3xl lg:text-4xl font-medium tracking-tight text-neutral-900 text-center max-w-3xl leading-[1.05]">
                     Dipercaya oleh perusahaan besar
                   </h2>
                   <p className="mt-4 text-base text-neutral-500 text-center max-w-2xl">
@@ -647,7 +647,7 @@ export default function Home() {
                         </div>
                         <div className="relative z-10 max-w-xl">
                           <h3
-                            className="text-3xl lg:text-5xl text-white mb-4 leading-tight font-playfair font-medium tracking-tight"
+                            className="text-2xl lg:text-4xl text-white mb-4 leading-tight font-playfair font-medium tracking-tight"
                             style={{}}
                           >
                             Sekarang giliran anda untuk bergabung dengan komunitas Laksana Business Park
@@ -717,7 +717,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="w-full px-6 lg:px-12 flex flex-col md:flex-row md:items-end justify-between mb-10 mt-20 gap-8 [animation:fadeSlideIn_0.8s_ease-out_0.2s_both] animate-on-scroll animate">
+      <div className="w-full px-6 lg:px-12 flex flex-col md:flex-row md:items-end justify-between -mb-10 mt-20 gap-8 [animation:fadeSlideIn_0.8s_ease-out_0.2s_both] animate-on-scroll animate">
           <h2 className="text-5xl lg:text-6xl font-normal text-neutral-900 tracking-tighter leading-[0.9] uppercase">
             Artikel
           </h2>

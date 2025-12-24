@@ -39,7 +39,7 @@ export default function Product() {
                 </div>
             </div>
             {/* Konten Produk */}
-            <div className="w-full px-6 lg:px-12 flex flex-col md:flex-row md:items-end justify-between mb-10 mt-10 gap-8 [animation:fadeSlideIn_0.8s_ease-out_0.2s_both] animate-on-scroll animate">
+            <div className="w-full px-6 lg:px-12 flex flex-col md:flex-row md:items-end justify-between mb-5 mt-15 gap-8 [animation:fadeSlideIn_0.8s_ease-out_0.2s_both] animate-on-scroll animate">
                 <h2 className="text-4xl lg:text-5xl font-normal text-neutral-900 tracking-tighter leading-[0.9] uppercase">
                     Tahap Satu
                 </h2>
@@ -121,7 +121,7 @@ export default function Product() {
             </div>
 
             {/* Konten Produk 2 */}
-            <div className="w-full px-6 lg:px-12 flex flex-col md:flex-row md:items-end justify-between mb-10 mt-10 gap-8 [animation:fadeSlideIn_0.8s_ease-out_0.2s_both] animate-on-scroll animate">
+            <div className="w-full px-6 lg:px-12 flex flex-col md:flex-row md:items-end justify-between mb-5 mt-15 gap-8 [animation:fadeSlideIn_0.8s_ease-out_0.2s_both] animate-on-scroll animate">
                 <h2 className="text-4xl lg:text-5xl font-normal text-neutral-900 tracking-tighter leading-[0.9] uppercase">
                     Tahap Dua
                 </h2>
@@ -161,6 +161,88 @@ export default function Product() {
                         </span>
                         <h3 className="text-xl sm:text-2xl font-medium text-white">
                             Cluster
+                        </h3>
+                    </div>
+                </a>
+            </div>
+
+            {/* Konten Produk 3 */}
+            <div className="w-full px-6 lg:px-12 flex flex-col md:flex-row md:items-end justify-between mb-5 mt-15 gap-8 [animation:fadeSlideIn_0.8s_ease-out_0.2s_both] animate-on-scroll animate">
+                <h2 className="text-4xl lg:text-5xl font-normal text-neutral-900 tracking-tighter leading-[0.9] uppercase">
+                    Luxima Bizhub 4 in 1
+                </h2>
+            </div>
+            {/* Card Produk */}
+            <div className="w-full px-6 lg:px-12 grid grid-cols-2 md:grid md:grid-cols-4 md:items-end [animation:fadeSlideIn_0.8s_ease-out_0.2s_both] animate-on-scroll animate">
+                <a
+                    href="#"
+                    className="group relative aspect-[3/4] overflow-hidden border-r border-b border-[#C7D0C8] bg-[#EBE9E4]"
+                >
+                    <img
+                        src="/images/card-unit/unit-opxima.png"
+                        className="grayscale-[10%] group-hover:scale-105 transition-transform duration-1000 w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <div className="absolute bottom-0 left-0 p-4 sm:p-6 w-full">
+                        <span className="text-[10px] font-sans uppercase tracking-widest text-white/80 mb-1 block">
+                            Gudang 4 in 1
+                        </span>
+                        <h3 className="text-xl sm:text-2xl font-medium text-white">
+                            Opxima
+                        </h3>
+                    </div>
+                </a>
+                <a
+                    href="#"
+                    className="group relative aspect-[3/4] overflow-hidden border-r border-b border-[#C7D0C8] bg-[#EBE9E4]"
+                >
+                    <img
+                        src="/images/card-unit/unit-nexima.png"
+                        className="grayscale-[10%] group-hover:scale-105 transition-transform duration-1000 object-auto bg-center w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <div className="w-full pt-4 sm:pt-6 pr-4 sm:pr-6 pb-4 sm:pb-6 pl-4 sm:pl-6 absolute bottom-0 left-0">
+                        <span className="text-[10px] font-sans uppercase tracking-widest text-white/80 mb-1 block">
+                            Gudang 4 in 1
+                        </span>
+                        <h3 className="text-xl sm:text-2xl font-medium text-white">
+                            Nexima
+                        </h3>
+                    </div>
+                </a>
+                <a
+                    href="#"
+                    className="group relative aspect-[3/4] overflow-hidden border-r border-b border-[#C7D0C8] bg-[#EBE9E4]"
+                >
+                    <img
+                        src="/images/card-unit/unit-nexima-plus.png"
+                        className="grayscale-[10%] group-hover:scale-105 transition-transform duration-1000 w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <div className="absolute bottom-0 left-0 p-4 sm:p-6 w-full">
+                        <span className="text-[10px] font-sans uppercase tracking-widest text-white/80 mb-1 block">
+                            Gudang 4 in 1 
+                        </span>
+                        <h3 className="text-xl sm:text-2xl font-medium text-white">
+                            Nexima Plus
+                        </h3>
+                    </div>
+                </a>
+                <a
+                    href="#"
+                    className="group relative aspect-[3/4] overflow-hidden border-r border-b border-[#C7D0C8] bg-[#EBE9E4]"
+                >
+                    <img
+                        src="/images/card-unit/unit-maxima.png"
+                        className="grayscale-[10%] group-hover:scale-105 transition-transform duration-1000 w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <div className="w-full pt-4 sm:pt-6 pr-4 sm:pr-6 pb-4 sm:pb-6 pl-4 sm:pl-6 absolute bottom-0 left-0">
+                        <span className="text-[10px] font-sans uppercase tracking-widest text-white/80 mb-1 block">
+                            Gudang 4 in 1
+                        </span>
+                        <h3 className="text-xl sm:text-2xl font-medium text-white">
+                            Maxima
                         </h3>
                     </div>
                 </a>

@@ -84,7 +84,10 @@ body {
 }
 
 .menu-link:hover {
-    font-style: italic;
+    font-style: none;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 15px;
     padding-left: 20px;
     color: var(--color-sand);
 }

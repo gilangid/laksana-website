@@ -157,7 +157,7 @@ export default function Menu() {
                 <div key={idx} className="menu-link-wrapper overflow-hidden cursor-pointer group">
                   <a
                     href={item.href}
-                    className={`menu-item delay-${idx * 20} block text-4xl md:text-6xl lg:text-7xl tracking-tight menu-link group-hover:text-brand font-normal text-white leading-tight pb-2`}
+                    className={`menu-item delay-${idx * 20} block text-3xl md:text-5xl lg:text-6xl tracking-tight menu-link group-hover:text-brand font-normal text-white leading-tight pb-2`}
                   >
                     {item.label}
                   </a>
