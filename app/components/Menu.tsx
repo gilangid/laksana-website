@@ -87,9 +87,9 @@ export default function Menu() {
         <div className="flex items-center gap-6 z-50">
           <a
             href="#"
-            className="hidden md:flex items-center gap-2 bg-brand px-6 py-3 text-xs tracking-[0.15em] font-medium uppercase transition-all duration-300 shadow-lg hover:shadow-brand/20 text-white btn-magnetic z-10 border border-transparent"
+            className="hidden md:flex items-center gap-2 bg-brand px-6 py-3 text-xs tracking-[0.15em] font-medium uppercase transition-all duration-300 shadow-lg hover:shadow-brand/20 text-black btn-magnetic z-10 border border-transparent"
           >
-            <span className="font-sans relative z-10">Request Visit</span>
+            <span className="font-sans relative z-10">Konsultasi Gratis</span>
           </a>
 
           {/* Burger Trigger */}

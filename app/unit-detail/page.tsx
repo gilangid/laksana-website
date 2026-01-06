@@ -89,7 +89,7 @@ export default function Unit() {
                         </p>
                     </div>
                     {/* Carousel Container */}
-                    <div className="relative bg-gray-900 overflow-hidden">
+                    <div className="relative bg-white overflow-hidden">
                         {/* Carousel Wrapper */}
                         <div className="relative w-full aspect-video">
                             {slides.map((slide, index) => (
@@ -116,7 +116,7 @@ export default function Unit() {
                                 <button
                                     key={index}
                                     onClick={() => setCurrentSlide(index)}
-                                    className={`h-1 rounded-full transition-all duration-300 ${
+                                    className={`h-0.5 transition-all duration-300 ${
                                         index === currentSlide
                                             ? "bg-white w-5"
                                             : "bg-white/50 w-2"
