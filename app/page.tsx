@@ -195,7 +195,7 @@ export default function Home() {
 
         {/* Header (Light Theme) */}
         <div className="w-full px-6 lg:px-12 flex flex-col md:flex-row md:items-end justify-between mb-7 mt-20 gap-8 [animation:fadeSlideIn_0.8s_ease-out_0.2s_both] animate-on-scroll animate">
-          <h2 className="text-5xl lg:text-6xl font-normal text-neutral-900 tracking-tighter leading-[0.9] uppercase">
+          <h2 className="text-5xl text-neutral-900 tracking-tighter leading-[0.9]">
             Proyek Kami
           </h2>
           <a
@@ -716,7 +716,7 @@ export default function Home() {
         </div>
       </div>
       <div className="w-full px-6 lg:px-12 flex flex-col md:flex-row md:items-end justify-between -mb-10 mt-20 gap-8 [animation:fadeSlideIn_0.8s_ease-out_0.2s_both] animate-on-scroll animate">
-          <h2 className="text-5xl lg:text-6xl font-normal text-neutral-900 tracking-tighter leading-[0.9] uppercase">
+          <h2 className="text-5xl text-neutral-900 tracking-tighter leading-[0.9]">
             Artikel
           </h2>
           <a
