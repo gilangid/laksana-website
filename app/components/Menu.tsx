@@ -149,7 +149,7 @@ export default function Menu() {
               {[
                 { href: '/', label: 'Home'},
                 { href: '/product', label: 'Produk'},
-                { href: '#', label: 'Tentang Kami'},
+                { href: '/our-company', label: 'Tentang Kami'},
                 { href: '#', label: 'Fasilitas'},
                 { href: '#', label: 'Tenan'},
                 { href: '/article', label: 'Artikel'},
