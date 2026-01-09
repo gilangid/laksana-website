@@ -12,7 +12,7 @@ export default function Home() {
     } = {
         "1": "/images/hero1.png",
         "2": "/images/img2.jpg",
-        "3": "/images/img1.jpg",
+        "3": "/images/hero2.png",
     };
     const [currentImage, setCurrentImage] = useState(images["1"]);
     const carouselRef = useRef < HTMLDivElement > (null);
