@@ -17,7 +17,7 @@ body {
 :root {
     --color-navy: #000000;
     --color-navy-dark: #ffffff;
-    --color-brand: #ffffff; /* accent yellow */
+    --color-brand: #ffffff;
     --color-sand: #1d2088;
 }
 

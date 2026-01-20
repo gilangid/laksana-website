@@ -52,6 +52,7 @@ export default function Timeline() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const yearsContainerRef = useRef<HTMLDivElement>(null);
     const textContentRef = useRef<HTMLDivElement>(null);
+    const isInitialMount = useRef(true);
 
     const updateSlide = (index: number) => {
         if (index < 0 || index >= journeyData.length) return;
@@ -62,15 +63,19 @@ export default function Timeline() {
         const textContent = textContentRef.current;
         if (textContent) {
             textContent.classList.remove('fade-in');
-            void textContent.offsetWidth; 
+            void textContent.offsetWidth;
             textContent.classList.add('fade-in');
         }
 
-        const yearsContainer = yearsContainerRef.current;
-        if (yearsContainer) {
-            const yearButtons = yearsContainer.querySelectorAll('button');
-            if (yearButtons[currentIndex]) {
-                yearButtons[currentIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        if (isInitialMount.current) {
+            isInitialMount.current = false;
+        } else {
+            const yearsContainer = yearsContainerRef.current;
+            if (yearsContainer) {
+                const yearButtons = yearsContainer.querySelectorAll('button');
+                if (yearButtons[currentIndex]) {
+                    yearButtons[currentIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                }
             }
         }
     }, [currentIndex]);
@@ -111,7 +116,7 @@ export default function Timeline() {
                                 <button
                                     key={item.year}
                                     onClick={() => updateSlide(index)}
-                                    className={`relative px-1 py-4 text-sm font-medium transition-colors duration-300 snap-start flex-shrink-0 whitespace-nowrap ${index === currentIndex ? 'text-[#1d2088]' : 'text-zinc-400 hover:text-zinc-600'}`}
+                                    className={`relative px-1 py-4 text-sm font-medium transition-colors duration-300 snap-start flex-shrink-0 whitespace-nowrap cursor-pointer ${index === currentIndex ? 'text-[#1d2088]' : 'text-zinc-400 hover:text-zinc-600'}`}
                                 >
                                     {item.year}
                                     {index === currentIndex && <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#1d2088] rounded-t-full"></span>}
