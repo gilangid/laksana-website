@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import Image from "next/image";
 import { submitForm } from "./actions";
 
-export default function FormPersonal() {
+export default function FormCompany() {
   const handleAction = async (formData: FormData) => {
     const result = await submitForm(formData);
     if (result.success) {
@@ -40,7 +40,7 @@ export default function FormPersonal() {
             {/* Left side - Title and description */}
             <div className="lg:flex-1 fade-in-up mb-[10%] mt-[10%] justify-center text-center">
               <h1 className="text-4xl md:text-5xl sm:text-4xl font-medium tracking-tight text-white mb-4 leading-[0.95] brand-font">
-                <span className="text-white bg-clip-text">FORM INPUT - PERORANGAN</span>
+                <span className="text-white bg-clip-text">FORM INPUT - COMPANY</span>
               </h1>
             </div>
           </div>
@@ -94,15 +94,15 @@ export default function FormPersonal() {
 
             <div className="mb-6">
               <label
-                htmlFor="fullname_customer"
+                htmlFor="fullname_company"
                 className="mb-2 block text-sm font-medium text-gray-700"
               >
-                Nama Lengkap (Customer)<span className="text-red-500">*</span>
+                Nama Lengkap (Perusahaan)<span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
-                name="fullname_customer"
-                id="fullname_customer"
+                name="fullname_company"
+                id="fullname_company"
                 className="w-full border border-gray-300 p-3 text-sm text-gray-800 shadow-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none"
                 required
               />
@@ -110,15 +110,31 @@ export default function FormPersonal() {
 
             <div className="mb-6">
               <label
-                htmlFor="phone_customer"
+                htmlFor="phone_company"
                 className="mb-2 block text-sm font-medium text-gray-700"
               >
-                Nomor Telefon Customer<span className="text-red-500">*</span>
+                Nomor Telefon Perusahaan<span className="text-red-500">*</span>
               </label>
               <input
                 type="number"
-                name="phone_customer"
-                id="phone_customer"
+                name="phone_company"
+                id="phone_company"
+                className="w-full border border-gray-300 p-3 text-sm text-gray-800 shadow-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none"
+                required
+              />
+            </div>
+
+            <div className="mb-6">
+              <label
+                htmlFor="phone_direksi"
+                className="mb-2 block text-sm font-medium text-gray-700"
+              >
+                Nomor Telefon Direksi / Komisaris<span className="text-red-500">*</span>
+              </label>
+              <input
+                type="number"
+                name="phone_direksi"
+                id="phone_direksi"
                 className="w-full border border-gray-300 p-3 text-sm text-gray-800 shadow-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none"
                 required
               />
@@ -127,14 +143,14 @@ export default function FormPersonal() {
             {/* Additional Notes */}
             <div className="mb-6">
               <label
-                htmlFor="alamat_customer"
+                htmlFor="alamat_company"
                 className="mb-2 block text-sm font-medium text-gray-700"
               >
-                Alamat Customer <span className="text-red-500">*</span>
+                Alamat Perusahaan <span className="text-red-500">*</span>
               </label>
               <textarea
-                name="alamat_customer"
-                id="alamat_customer"
+                name="alamat_company"
+                id="alamat_company"
                 rows={3}
                 className="w-full border border-gray-300 p-3 text-sm text-gray-800 shadow-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none"
                 defaultValue={""}
@@ -162,7 +178,7 @@ export default function FormPersonal() {
 
             <div className="mb-6">
               <label
-                htmlFor="payment-method"
+                htmlFor="leads"
                 className="mb-2 block text-sm font-medium text-gray-700"
               >
                 Customer Leads<span className="text-red-500">*</span>
@@ -194,7 +210,7 @@ export default function FormPersonal() {
                 htmlFor="ktp-kitas"
                 className="mb-2 block text-sm font-medium text-gray-700"
               >
-                Upload KTP/KITAS<span className="text-red-500">*</span>
+                Upload KTP / NPWP / Paspor(Jika WNA) - Direksi/Komisaris<span className="text-red-500">*</span>
               </label>
               <input
                 type="file"
@@ -209,15 +225,16 @@ export default function FormPersonal() {
             {/* Document Upload */}
             <div className="mb-6">
               <label
-                htmlFor="npwp-pribadi"
+                htmlFor="nib"
                 className="mb-2 block text-sm font-medium text-gray-700"
               >
-                Upload NPWP Pribadi<span className="text-red-500">*</span>
+                Upload NIB Berbasis Resiko<span className="text-red-500">*</span>
               </label>
               <input
                 type="file"
-                name="npwp-pribadi"
-                id="npwp-pribadi"
+                name="nib"
+                id="nib"
+                multiple
                 accept=".pdf,.jpg,.jpeg,.png"
                 className="w-full border border-gray-300 p-3 text-sm text-gray-800 file:mr-4 file:rounded-md file:border-0 file:bg-indigo-50 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-indigo-700 hover:file:bg-indigo-100 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none"
                 required
@@ -227,10 +244,10 @@ export default function FormPersonal() {
             {/* Document Upload */}
             <div className="mb-6">
               <label
-                htmlFor="kartu-keluarga"
+                htmlFor="akta-perusahaan"
                 className="mb-2 block text-sm font-medium text-gray-700"
               >
-                Upload Kartu Keluarga (Optional)
+                Upload Akta Pendirian/Perubahan Perusahaan<span className="text-red-500">*</span>
               </label>
               <input
                 type="file"
@@ -238,21 +255,39 @@ export default function FormPersonal() {
                 id="kartu-keluarga"
                 accept=".pdf,.jpg,.jpeg,.png"
                 className="w-full border border-gray-300 p-3 text-sm text-gray-800 file:mr-4 file:rounded-md file:border-0 file:bg-indigo-50 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-indigo-700 hover:file:bg-indigo-100 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none"
+                required
               />
             </div>
 
             {/* Document Upload */}
             <div className="mb-6">
               <label
-                htmlFor="kartu-keluarga"
+                htmlFor="surat-penyataan"
                 className="mb-2 block text-sm font-medium text-gray-700"
               >
-              Upload Akta Kelahiran / Akta Pernikahan (Optional)
+              Surat pernyataan yang menerangkan bahwa akta pendirian & akta perubahan yang diserahkan adalah akta terakhir.<span className="text-red-500">*</span>
               </label>
               <input
                 type="file"
                 name="kartu-keluarga"
                 id="kartu-keluarga"
+                accept=".pdf,.jpg,.jpeg,.png"
+                className="w-full border border-gray-300 p-3 text-sm text-gray-800 file:mr-4 file:rounded-md file:border-0 file:bg-indigo-50 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-indigo-700 hover:file:bg-indigo-100 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none"
+                required
+              />
+            </div>
+
+             <div className="mb-6">
+              <label
+                htmlFor="surat-persetujuan"
+                className="mb-2 block text-sm font-medium text-gray-700"
+              >
+                Surat Persetujuan Dewan Komisaris (Optional)
+              </label>
+              <input
+                type="file"
+                name="surat-persetujuan"
+                id="surat-persetujuan"
                 accept=".pdf,.jpg,.jpeg,.png"
                 className="w-full border border-gray-300 p-3 text-sm text-gray-800 file:mr-4 file:rounded-md file:border-0 file:bg-indigo-50 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-indigo-700 hover:file:bg-indigo-100 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none"
               />
