@@ -15,51 +15,37 @@ export default function SocialPage() {
     {
       id: "261652",
       title: "Official Whatsapp Laksana Business Park",
-      url: "[Link]",
+      url: "https://api.whatsapp.com/send?phone=6281805886000&text=%5BSOCIAL%5D%20Halo%20tim%20marketing%20Laksana%2C%20saya%20ingin%20bertanya%20lebih%20lanjut%20tentang%20unit%20Laksana%20Business%20Park",
       icon: "/images/landing/wa.png",
       altText: "Official Whatsapp Laksana",
     },
     {
       id: "261685",
-      title: "GitHub @ [User]",
-      url: "[Link]",
-      icon: "/images/landing/github.png",
-      altText: "GitHub @ [User]",
+      title: "Tiktok Official Laksana Business Park",
+      url: "https://www.tiktok.com/@laksanabusinesspark.id",
+      icon: "/images/landing/tiktok.webp",
+      altText: "Tiktok @ laksanabusinesspark.id",
     },
     {
       id: "261686",
-      title: "Credly @ [User]",
-      url: "[Link]",
-      icon: "/images/landing/credly.png",
-      altText: "Credly @ [User]",
+      title: "Estate Management Laksana Business Park",
+      url: "https://api.whatsapp.com/send?phone=6285776686962&text=%5BSOCIAL%5D%20Halo%20saya%20ingin%20bertanya%2C%20mengenai%20Estate%20manajemen%20bisa%20tolong%20dibantu",
+      icon: "/images/landing/wa.png",
+      altText: "Estate Management Laksana Business Park",
     },
     {
       id: "261687",
-      title: "HackerRank @ [User]",
-      url: "[Link]",
-      icon: "/images/landing/hackerrank.png",
-      altText: "HackerRank @ [User]",
+      title: "Location Laksana Business Park Marketing Gallery (PIK)",
+      url: "https://maps.app.goo.gl/mJnbJZiBcm4S5fho8",
+      icon: "/images/landing/maps.png",
+      altText: "Location Laksana Business Park Marketing Gallery (PIK)",
     },
     {
       id: "261688",
-      title: "Replit @ [User]",
-      url: "[Link]",
-      icon: "/images/landing/replit.png",
-      altText: "Replit @ [User]",
-    },
-    {
-      id: "261689",
-      title: "Instagram @ [User]",
-      url: "[Link]",
-      icon: "/images/landing/instagram.png",
-      altText: "Instagram @ [User]",
-    },
-    {
-      id: "261690",
-      title: "Facebook @ [User]",
-      url: "[Link]",
-      icon: "/images/landing/facebook.png",
-      altText: "Facebook @ [User]",
+      title: "Location Laksana Business Park Marketing Gallery (Site Gallery)",
+      url: "https://maps.app.goo.gl/L6v6HjzGwCoETv4V8",
+      icon: "/images/landing/maps.png",
+      altText: "Location Laksana Business Park Marketing Gallery (Site Gallery)",
     },
   ];
 
@@ -76,10 +62,10 @@ export default function SocialPage() {
         {/* Profile Image */}
         <div className="flex-both-center">
           <Image
-            src="/images/landing/logo.png"
+            src="/images/landing/logos.png"
             alt="Profile Picture"
-            width={96}
-            height={96}
+            width={120}
+            height={120}
             className="display-image"
             priority
           />
