@@ -15,6 +15,8 @@ export default function Home() {
     "3": "/images/hero2.png",
   };
   const [currentImage, setCurrentImage] = useState(images["1"]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isVRModalOpen, setIsVRModalOpen] = useState(false);
   const carouselRef = useRef < HTMLDivElement > (null);
   useEffect(() => {
     const initInViewAnimations = function(selector = ".animate-on-scroll") {
@@ -153,15 +155,15 @@ export default function Home() {
             <span className="text-white text-sm text-shadow tracking-wide animate-bounce">
               Klik untuk Lihat
             </span>
-            <a
-              href="#virtual"
-              className="justify-start flex px-8 py-4 border border-white/20 text-white hover:bg-white/10 backdrop-blur-sm font-medium transition-colors text-sm tracking-wide whitespace-nowrap"
+            <button
+              onClick={() => setIsVRModalOpen(true)}
+              className="justify-start flex px-8 py-4 border border-white/20 text-white hover:bg-white/10 backdrop-blur-sm font-medium transition-colors text-sm tracking-wide whitespace-nowrap cursor-pointer"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-play-circle-fill mr-3 mt-0.5" viewBox="0 0 16 16">
                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"/>
               </svg>
               Virtual 3D
-            </a>
+            </button>
           </div>
         </div>
       </div>
@@ -892,5 +894,30 @@ export default function Home() {
       </div>
       </section>
       <Footer />
+
+      {/* VR Modal */}
+      {isVRModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+          {/* Close Button - Outside Iframe */}
+          <button
+            onClick={() => setIsVRModalOpen(false)}
+            className="absolute top-8 right-8 w-10 h-10 flex items-center justify-center bg-white/20 hover:bg-white/30 text-white rounded-full transition-colors backdrop-blur-sm z-50"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-x-lg" viewBox="0 0 16 16">
+              <path d="M2.146 2.354l11.5 11.5m0-11.5l-11.5 11.5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round"/>
+            </svg>
+          </button>
+
+          <div className="relative w-11/12 h-5/6 max-w-6xl bg-black rounded-lg overflow-hidden shadow-2xl">
+            {/* Iframe */}
+            <iframe
+              src="https://www.vr-illustratorasia.xyz/Laksana%20Business%20Park/250831/"
+              className="w-full h-full border-none"
+              title="Laksana Business Park VR"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      )}
     </>);
 }
