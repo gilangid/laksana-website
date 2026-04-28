@@ -162,15 +162,15 @@ export default function FormCompany() {
 
             <div className="mb-6">
               <label
-                htmlFor="expense-date"
+                htmlFor="booking-date"
                 className="mb-2 block text-sm font-medium text-gray-700"
               >
                 Tanggal UTJ<span className="text-red-500">*</span>
               </label>
               <input
                 type="date"
-                name="expense-date"
-                id="expense-date"
+                name="booking-date"
+                id="booking-date"
                 className="w-full border border-gray-300 p-3 text-sm text-gray-800 shadow-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none"
                 required
               />
@@ -216,6 +216,7 @@ export default function FormCompany() {
                 type="file"
                 name="ktp-kitas"
                 id="ktp-kitas"
+                multiple
                 accept=".pdf,.jpg,.jpeg,.png"
                 className="w-full border border-gray-300 p-3 text-sm text-gray-800 file:mr-4 file:rounded-md file:border-0 file:bg-indigo-50 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-indigo-700 hover:file:bg-indigo-100 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none"
                 required
@@ -251,8 +252,9 @@ export default function FormCompany() {
               </label>
               <input
                 type="file"
-                name="kartu-keluarga"
-                id="kartu-keluarga"
+                name="akta-perusahaan"
+                id="akta-perusahaan"
+                multiple
                 accept=".pdf,.jpg,.jpeg,.png"
                 className="w-full border border-gray-300 p-3 text-sm text-gray-800 file:mr-4 file:rounded-md file:border-0 file:bg-indigo-50 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-indigo-700 hover:file:bg-indigo-100 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none"
                 required
@@ -269,8 +271,9 @@ export default function FormCompany() {
               </label>
               <input
                 type="file"
-                name="kartu-keluarga"
-                id="kartu-keluarga"
+                name="surat-penyataan"
+                id="surat-penyataan"
+                multiple
                 accept=".pdf,.jpg,.jpeg,.png"
                 className="w-full border border-gray-300 p-3 text-sm text-gray-800 file:mr-4 file:rounded-md file:border-0 file:bg-indigo-50 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-indigo-700 hover:file:bg-indigo-100 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none"
                 required
@@ -288,6 +291,7 @@ export default function FormCompany() {
                 type="file"
                 name="surat-persetujuan"
                 id="surat-persetujuan"
+                multiple
                 accept=".pdf,.jpg,.jpeg,.png"
                 className="w-full border border-gray-300 p-3 text-sm text-gray-800 file:mr-4 file:rounded-md file:border-0 file:bg-indigo-50 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-indigo-700 hover:file:bg-indigo-100 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none"
               />
